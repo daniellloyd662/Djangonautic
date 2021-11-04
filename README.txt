@@ -1,0 +1,5 @@
+Djangonautic is a basic blog site designed using the net-ninja django blog tutorial series
+
+Minor modifications were made due to updates in django syntax since the development of the tutorial
+
+Output of pip freeze after completion of the project is stored in README.txt for use in creation of a virtual environment
