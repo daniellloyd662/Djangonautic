@@ -1,0 +1,20 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="article-detail">
+  <div class="article">
+    <!-- All article properties are pulled from the model -->
+    <!-- image source is linked to the thumb property of each article object in the for loop -->
+    <img src="{{article.thumb.url}}" alt="">
+    <h2>{{article.title}}</h2>
+    <p>{{article.body}}</p>
+    <p>{{article.date}}</p>
+
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}

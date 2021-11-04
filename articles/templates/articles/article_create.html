@@ -1,0 +1,17 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="create-article">
+  <h2>Create an Awesome New Article</h2>
+  <!-- articles:create redirects to the view with name create in app folder articles -->
+  <!-- Enctype encrypts the image being uploaded -->
+  <form class="site-form" action="{% url 'articles:create' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}    <!-- form is a dictionary key passed in from views.py -->
+    <input type="submit" name="" value="Create">
+  </form>
+</div>
+<!-- script to auto populate the slug when a user enters a title -->
+<script src="/static/slugify.js"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<h1>Signup</h1>
+<!-- The form object that was imported in views.py does not include form tags so these must be added manually-->
+<!-- Action specifies which url to send data to once submit is pressed. Post specifies that data will be sent rather than received -->
+<form class="site-form" action= "/accounts/signup/" method="post">
+<!-- csrf data is a token sent with data to ensure that it is coming from within the application -->
+  {% csrf_token %}
+
+  <!-- All form fields from djangos authentication system will be included -->
+  {{ form }}
+  <input type="submit" name="" value="Signup">
+</form>
+{% endblock %}

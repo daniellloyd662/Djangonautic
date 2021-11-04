@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+
+{% block content %}                             <!-- This tag directs the below html code to be inserted in the 'content' block specified in the base html file -->
+    <h1>Article List</h1>
+    <div class="articles">
+      {% for article in articles %}                           <!-- This kind of template is used for python code -->
+        <div class="article">
+          <!-- Passes through the slug defined in each article to urls.by calling article.slug -->
+            <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
+
+            <p>{{ article.snippet }}</p> <!-- This kind of template is used to return data -->
+            <p>{{ article.date }}</p>
+            <!-- Django object User was passed in to the article object created in views.py, username is an attribute of User that we call below -->
+
+            <p class="author">Added by {{article.author.username}}  </p> <!-- Adds an author tag to each article --> 
+        </div>
+      {% endfor %}
+{% endblock %}

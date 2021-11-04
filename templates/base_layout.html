@@ -1,0 +1,40 @@
+<!-- Below template tag adds all static files so that links don't need to be hard coded -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Articles</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <header class="wrapper">
+      <!-- wrapper is the class in which extensions of this template will be placed -->
+    <!-- Anchor tag checks for a url called list and links to it. The url is set in urls.py using name=<name> -->
+    <h1> <a href="{% url 'home' %}"> <img src="{% static 'logo.png' %}" alt=""> </a> </h1>
+<!-- Navbar shows different content based on whether the user is logged in. Yes=>'new article','logout' No=>'login', 'signup' -->
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+        <li>
+          <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" name="button">Logout</button>
+          </form>
+        </li>
+        <li>  <a href="{% url 'articles:create' %}">New Article</a> </li>
+        {% else %}
+        <li> <a href="{% url 'accounts:login' %}">Login</a> </li>
+        <li> <a href="{% url 'accounts:signup' %}">Signup</a> </li>
+        {% endif %}
+      </ul>
+    </nav>
+    </header>
+    <div class="wrapper">
+  <!-- Adds a block called 'content' -->
+      {% block content %}
+      {% endblock%}
+
+    </div>
+  </body>
+</html>

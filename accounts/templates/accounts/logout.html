@@ -1,0 +1,13 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<h1>Login</h1>
+<form class="site-form" action= "{% url 'accounts:login' %}" method="post">
+<!-- csrf data is a token sent with data to ensure that it is coming from within the application -->
+  {% csrf_token %}
+
+  <!-- All form fields from djangos authentication system will be included -->
+  {{ form }}
+  <input type="submit" name="" value="Login">
+</form>
+{% endblock %}
